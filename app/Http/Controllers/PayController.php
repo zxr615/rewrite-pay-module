@@ -6,7 +6,7 @@ use App\Exceptions\BusinessException;
 use App\Exceptions\TemporaryOrderException;
 use App\Http\Services\Payment\PaymentContext;
 use App\Http\Services\Payment\PaymentFactory;
-use App\Http\Services\PayOrder\RequestEntity\VipEntity;
+use App\Http\Services\PayOrder\Entity\VipEntity;
 use App\Http\Services\PayOrder\PayOrderContext;
 use App\Http\Services\PayOrder\PreviewFactory;
 use App\Http\Services\PayOrder\Strategy\VipStrategy;
@@ -64,6 +64,7 @@ class PayController extends Controller
             return $this->fail($e->getMessage());
         }
 
+        dd($preview);
         return view('preview', $preview);
     }
 

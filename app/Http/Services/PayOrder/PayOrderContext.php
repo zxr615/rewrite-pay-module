@@ -3,7 +3,7 @@
 
 namespace App\Http\Services\PayOrder;
 
-use App\Http\Services\PayOrder\RequestEntity\Entity;
+use App\Http\Services\PayOrder\Entity\Entity;
 
 class PayOrderContext
 {

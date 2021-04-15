@@ -3,7 +3,7 @@
 namespace App\Http\Services\PayOrder;
 
 use App\Exceptions\UnsupportedOperationException;
-use App\Http\Services\PayOrder\RequestEntity\Entity;
+use App\Http\Services\PayOrder\Entity\Entity;
 use Illuminate\Http\Request;
 
 abstract class PayOrderStrategy

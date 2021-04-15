@@ -3,7 +3,7 @@
 
 namespace App\Http\Services\PayOrder\Strategy;
 
-use App\Http\Services\PayOrder\RequestEntity\Entity;
+use App\Http\Services\PayOrder\Entity\Entity;
 use App\Http\Services\PayOrder\PayOrderStrategy;
 use App\Http\Services\PayOrderService;
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Http\Services\PayOrder\RequestEntity;
+namespace App\Http\Services\PayOrder\Entity;
 
 
 class VipEntity extends Entity

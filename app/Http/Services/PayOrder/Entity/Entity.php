@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services\PayOrder\RequestEntity;
+namespace App\Http\Services\PayOrder\Entity;
 
 use App\Http\Services\PayOrderService;
 use Illuminate\Http\Request;
