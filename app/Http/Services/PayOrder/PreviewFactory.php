@@ -6,7 +6,7 @@ namespace App\Http\Services\PayOrder;
 
 use App\Exceptions\BusinessException;
 use App\Exceptions\TemporaryOrderException;
-use App\Http\Services\Payment\VipStrategy;
+use App\Http\Services\PayOrder\Strategy\VipStrategy;
 use App\Http\Services\PayOrderService;
 
 class PreviewFactory

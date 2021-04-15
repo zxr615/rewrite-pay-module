@@ -24,7 +24,7 @@ class PayOrderService
     public function saveTemporaryOrder(array $tmpOrder)
     {
         $key = Uuid::uuid4()->toString();
-        Cache::put($key, $tmpOrder, 180);
+        Cache::put($key, $tmpOrder, 1800);
 
         return $key;
     }

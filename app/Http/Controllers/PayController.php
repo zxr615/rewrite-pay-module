@@ -6,9 +6,10 @@ use App\Exceptions\BusinessException;
 use App\Exceptions\TemporaryOrderException;
 use App\Http\Services\Payment\PaymentContext;
 use App\Http\Services\Payment\PaymentFactory;
+use App\Http\Services\PayOrder\RequestEntity\VipEntity;
 use App\Http\Services\PayOrder\PayOrderContext;
 use App\Http\Services\PayOrder\PreviewFactory;
-use App\Http\Services\Payment\VipStrategy;
+use App\Http\Services\PayOrder\Strategy\VipStrategy;
 use App\Http\Services\PayOrderService;
 use Illuminate\Http\Request;
 
@@ -45,8 +46,8 @@ class PayController extends Controller
     // 开通 vip
     public function vip(Request $request)
     {
-        $strategy    = new VipStrategy();
-        $tmpOrderKey = (new PayOrderContext($strategy))->createOrder($request);
+        $vipEntity   = new VipEntity($request);
+        $tmpOrderKey = (new PayOrderContext(new VipStrategy()))->createOrder($vipEntity);
 
         return $this->data(['key' => $tmpOrderKey]);
     }
@@ -55,9 +56,10 @@ class PayController extends Controller
     public function preview(Request $request)
     {
         $tmpOrderKey = $request->get('key');
+        $tmpOrder = app(PayOrderService::class)->getTemporaryOrder($tmpOrderKey);
 
         try {
-            $preview = PreviewFactory::strategy($tmpOrderKey)->preview($tmpOrderKey);
+            $preview = PreviewFactory::strategy($tmpOrderKey)->preview($tmpOrder);
         } catch (TemporaryOrderException $e) {
             return $this->fail($e->getMessage());
         }

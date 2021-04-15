@@ -3,24 +3,22 @@
 
 namespace App\Http\Services\PayOrder\Strategy;
 
+use App\Http\Services\PayOrder\RequestEntity\Entity;
 use App\Http\Services\PayOrder\PayOrderStrategy;
 use App\Http\Services\PayOrderService;
-use Illuminate\Http\Request;
 
 // 开通 vip
 class VipStrategy extends PayOrderStrategy
 {
-    function createTemporaryOrder(Request $request)
+    function createTemporaryOrder(Entity $entity)
     {
-        $packageCode = $request['code'];
-        $package     = app(PayOrderService::class)->getVipByCode($packageCode);
-
         // 临时订单数据
         $tmpOrder = [
-            'package_cope' => $package->toArray(),
+            'package_cope' => $entity->getPackageCope(),
             'type'         => PayOrderService::TYPE_VIP,
-            'uid'          => 1,
-            'ip'           => $request->ip(),
+            'uid'          => $entity->getUid(),
+            'ip'           => $entity->getIp(),
+            'buy_month'    => $entity->getBuyMonth()
             // ....
         ];
 
@@ -31,9 +29,10 @@ class VipStrategy extends PayOrderStrategy
 
     public function preview(array $tmpOrder)
     {
+        $packageCope = json_decode($tmpOrder['package_cope'], true);
         $preview = [
             'title' => '开通会员',
-            'price' => $tmpOrder['package_cope']['price'],
+            'price' => $packageCope['price'],
         ];
 
         return $preview;

@@ -3,12 +3,13 @@
 namespace App\Http\Services\PayOrder;
 
 use App\Exceptions\UnsupportedOperationException;
+use App\Http\Services\PayOrder\RequestEntity\Entity;
 use Illuminate\Http\Request;
 
 abstract class PayOrderStrategy
 {
     // 创建临时订单
-    abstract function createTemporaryOrder(Request $request);
+    abstract function createTemporaryOrder(Entity $entity);
 
     // 预览订单
     public function preview(array $tmpOrder)

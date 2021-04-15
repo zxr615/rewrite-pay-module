@@ -11,9 +11,11 @@
         "php": "^7.2.5|^8.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
+        "guzzlehttp/guzzle": "^6.3.1",
         "laravel/framework": "^7.29",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "lokielse/omnipay-alipay": "v3.1.2",
+        "ext-json": "*"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

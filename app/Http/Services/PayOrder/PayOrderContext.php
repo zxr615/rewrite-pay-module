@@ -3,6 +3,8 @@
 
 namespace App\Http\Services\PayOrder;
 
+use App\Http\Services\PayOrder\RequestEntity\Entity;
+
 class PayOrderContext
 {
     private $strategy;
@@ -12,9 +14,9 @@ class PayOrderContext
         return $this->strategy = $payOrderStrategy;
     }
 
-    public function createOrder($request)
+    public function createOrder(Entity $entity)
     {
-        return $this->strategy->createTemporaryOrder($request);
+        return $this->strategy->createTemporaryOrder($entity);
     }
 
     public function preview(array $tmpOrder)
