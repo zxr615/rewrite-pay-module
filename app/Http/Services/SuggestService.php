@@ -1,10 +1,10 @@
 <?php
 
 
-namespace App\Http;
+namespace App\Http\Services;
 
 
-class SuggerService
+class SuggestService
 {
     public const PAY_STATUS_FAIL = 0;
     public const PAY_STATUS_OK   = 1;
@@ -26,5 +26,11 @@ class SuggerService
         if ($this->isPaid($payStatus)) {
             // ...
         }
+    }
+
+    // 是否已支付完成
+    public function isPaid($payStatus)
+    {
+        return $payStatus == self::PAY_STATUS_OK;
     }
 }

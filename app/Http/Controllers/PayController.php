@@ -15,14 +15,6 @@ use Illuminate\Http\Request;
 
 class PayController extends Controller
 {
-
-
-    // 是否已支付完成
-    public function isPaid($payStatus)
-    {
-        return $payStatus == self::PAY_STATUS_OK;
-    }
-
     // 开通 vip
     // http://127.0.0.1:8000/buy/vip?code=buy_vip&buy_month=5
     public function vip(Request $request)

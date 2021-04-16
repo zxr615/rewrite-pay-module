@@ -4,7 +4,6 @@
 namespace App\Http\Services;
 
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
 use Ramsey\Uuid\Uuid;
 
 class PayOrderService
