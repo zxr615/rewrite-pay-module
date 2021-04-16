@@ -10,13 +10,9 @@ use Illuminate\Support\Str;
 abstract class Entity
 {
     protected $ip;
-
     protected $packageCope;
-
     protected $code;
-
     protected $uid;
-
     protected $type;
 
     public function __construct(Request $request)
@@ -26,6 +22,7 @@ abstract class Entity
         $this->uid         = Auth::id();
         $this->packageCope = app(PayOrderService::class)->getVipByCode($this->code);
 
+        // 为成员方法 `set` 值
         foreach ($request->all() as $fields => $value) {
             $property = 'set' . Str::studly($fields);
             if (property_exists($this, $fields)) {
@@ -34,82 +31,52 @@ abstract class Entity
         }
     }
 
-    /**
-     * @return string|\Symfony\Component\HttpFoundation\string|null
-     */
     public function getIp()
     {
         return $this->ip;
     }
 
-    /**
-     * @param string|\Symfony\Component\HttpFoundation\string|null $ip
-     */
-    public function setIp($ip): void
+    public function setIp($ip)
     {
         $this->ip = $ip;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCode()
     {
         return $this->code;
     }
 
-    /**
-     * @param mixed $code
-     */
-    public function setCode($code): void
+    public function setCode($code)
     {
         $this->code = $code;
     }
 
-    /**
-     * @return mixed
-     */
     public function getUid()
     {
         return $this->uid;
     }
 
-    /**
-     * @param mixed $uid
-     */
-    public function setUid($uid): void
+    public function setUid($uid)
     {
         $this->uid = $uid;
     }
 
-    /**
-     * @return mixed
-     */
     public function getType()
     {
         return $this->type;
     }
 
-    /**
-     * @param mixed $type
-     */
-    public function setType($type): void
+    public function setType($type)
     {
         $this->type = $type;
     }
 
-    /**
-     * @return string
-     */
     public function getPackageCope()
     {
         return $this->packageCope;
     }
 
-    /**
-     * @param string $packageCope
-     */
-    public function setPackageCope(string $packageCope): void
+    public function setPackageCope($packageCope)
     {
         $this->packageCope = $packageCope;
     }

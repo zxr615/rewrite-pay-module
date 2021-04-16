@@ -15,27 +15,7 @@ use Illuminate\Http\Request;
 
 class PayController extends Controller
 {
-    public const PAY_STATUS_FAIL = 0;
-    public const PAY_STATUS_OK   = 1;
-    public const PAY_STATUS_WAIT = 2;
 
-    public function give($payStatus)
-    {
-        // 最不明确的方法, 如果没注释真不知道什么意思
-        if ($payStatus == 1) {
-            // ...
-        }
-
-        // 比较好的方法，即便没有注释，意思也比较明确
-        if ($payStatus == self::PAY_STATUS_OK) {
-            // ...
-        }
-
-        // 我更喜欢用的方法，定义一个方法，看方法名知其意
-        if ($this->isPaid($payStatus)) {
-            // ...
-        }
-    }
 
     // 是否已支付完成
     public function isPaid($payStatus)
@@ -44,6 +24,7 @@ class PayController extends Controller
     }
 
     // 开通 vip
+    // http://127.0.0.1:8000/buy/vip?code=buy_vip&buy_month=5
     public function vip(Request $request)
     {
         $vipEntity   = new VipEntity($request);
@@ -53,10 +34,11 @@ class PayController extends Controller
     }
 
     // 预览订单接口
+    // http://127.0.0.1:8000/buy/preview?key=
     public function preview(Request $request)
     {
         $tmpOrderKey = $request->get('key');
-        $tmpOrder = app(PayOrderService::class)->getTemporaryOrder($tmpOrderKey);
+        $tmpOrder    = app(PayOrderService::class)->getTemporaryOrder($tmpOrderKey);
 
         try {
             $preview = PreviewFactory::strategy($tmpOrderKey)->preview($tmpOrder);

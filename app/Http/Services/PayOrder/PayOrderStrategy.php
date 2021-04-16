@@ -16,7 +16,4 @@ abstract class PayOrderStrategy
     {
         throw new UnsupportedOperationException("不支持的方法");
     }
-
-
-
 }

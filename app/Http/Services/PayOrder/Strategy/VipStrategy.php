@@ -30,7 +30,7 @@ class VipStrategy extends PayOrderStrategy
     public function preview(array $tmpOrder)
     {
         $packageCope = json_decode($tmpOrder['package_cope'], true);
-        $preview = [
+        $preview     = [
             'title' => '开通会员',
             'price' => $packageCope['price'],
         ];

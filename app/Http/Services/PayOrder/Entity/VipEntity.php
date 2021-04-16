@@ -3,25 +3,11 @@
 
 namespace App\Http\Services\PayOrder\Entity;
 
-
 class VipEntity extends Entity
 {
+    // 开通vip月数
     protected $buyMonth;
 
-    /**
-     * @return mixed
-     */
-    public function getBuyMonth()
-    {
-        return $this->buyMonth;
-    }
-
-    /**
-     * @param mixed $buyMonth
-     */
-    public function setBuyMonth($buyMonth): void
-    {
-        $this->buyMonth = $buyMonth;
-    }
-
+    public function getBuyMonth() { return $this->buyMonth;}
+    public function setBuyMonth($buyMonth){ $this->buyMonth = $buyMonth;}
 }
