@@ -17,3 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('blog')->group(function () {
+    Route::prefix('before')->group(function () {
+        Route::post('store', 'BeforeBlogController@store');
+        Route::post('update', 'BeforeBlogController@update');
+        Route::post('delete', 'BeforeBlogController@delete');
+    });
+
+    Route::prefix('after')->group(function () {
+        Route::post('store', 'AfterBlogController@store');
+        Route::post('update', 'AfterBlogController@update');
+        Route::post('delete', 'AfterBlogController@delete');
+    });
+});
