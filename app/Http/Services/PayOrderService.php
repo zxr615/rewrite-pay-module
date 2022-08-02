@@ -40,4 +40,31 @@ class PayOrderService
         return Order::Create($order);
     }
 
+    // 通过订单号获取订单信息
+    public function getOrderInfoByOrderNo($orderNo)
+    {
+        // 这里应是从数据库获取数据返回
+        return collect(['id' => 1, 'order_sn' => '1606148692412517', 'price' => 100]);
+    }
+
+    // 今天是否首单
+    public function isTodayFirst($orderSn)
+    {
+        // code...
+        return true;
+    }
+
+    // 为用户赠送积分
+    public function sendPoint($amount)
+    {
+        // code...
+        return true;
+    }
+
+    // 回收积分
+    public function recyclePoint($amount)
+    {
+        // code...
+        return true;
+    }
 }
